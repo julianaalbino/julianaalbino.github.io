@@ -1,127 +1,148 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Jogo da Memória com Imagens</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 20px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Rede Social</title>
+    <style>
+        /* Corpo da página */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('link da imagem');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+        }
 
-    h1 {
-      margin-bottom: 20px;
-    }
+        /* Container do perfil */
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Para dar destaque ao conteúdo */
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 800px;
+            margin: 50px auto; /* Adicionado para centralizar */
+        }
 
-    .tabuleiro {
-      display: grid;
-      grid-template-columns: repeat(4, 100px);
-      gap: 10px;
-    }
+        /* Foto de perfil */
+        .profile-img {
+            width: 120px;
+            height: auto;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin-top: -60px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
 
-    .carta {
-      width: 100px;
-      height: 100px;
-      background-color: #4CAF50;
-      border-radius: 8px;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
+        /* Nome e título */
+        .profile-info {
+            text-align: center;
+            color: grey;
+        }
 
-    .carta img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: none;
-    }
+        .profile-info h1 {
+            margin: 10px 0;
+            font-size: 30px;
+            font-weight: bold;
+        }
 
-    .carta.virada img {
-      display: block;
-    }
+        .profile-info p {
+            font-size: 18px;
+            color: #fff;
+            margin: 5px 0;
+        }
 
-    .carta::before {
-      content: "";
-      background-color: #2196F3;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 1;
-      transition: 0.3s;
-    }
+        /* Descrição e dados adicionais */
+        .profile-details {
+            background-color: white;
+            width: 100%;
+            max-width: 700px;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-    .carta.virada::before {
-      opacity: 0;
-    }
-  </style>
+        .profile-details h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .profile-details p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .quote {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+            font-style: italic;
+            text-align: center;
+        }
+
+        /* Botão de seguir */
+        .follow-button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .follow-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
 </head>
 <body>
-  <h1>Jogo da Memória 🖼️</h1>
-  <div class="tabuleiro" id="tabuleiro"></div>
 
-  <script>
-    const imagens = [
-      'link',
-      'link',
-      'link',
-      'link',
-      'link',
-      'link',
-      'link',
-      'link',
-      'link',
-      'link'
-    ];
+    <!-- Container do perfil -->
+    <div class="profile-container">
+        <!-- Foto de perfil -->
+        <img class="profile-img" src="file:///caminho da foto" alt="Foto de Perfil">
 
-    let cartas = [...imagens, ...imagens];
-    cartas = cartas.sort(() => 0.5 - Math.random());
+        <!-- Informações do perfil -->
+        <div class="profile-info">
+            <h1>NOME</h1>
+            <h7>Curso: *** Turma: ** </h7> 
+            <p> </p>
+            <h7>Idade: XX anos</h7>
+        </div>
 
-    const tabuleiro = document.getElementById('tabuleiro');
-    let cartaVirada = null;
-    let travado = false;
+        <!-- Detalhes adicionais -->
+        <div class="profile-details">
+            <h2>Sobre mim</h2>
+            <p>FALE SOBRE VOCÊ.</p>
 
-    cartas.forEach((imgUrl, index) => {
-      const carta = document.createElement('div');
-      carta.classList.add('carta');
-      carta.dataset.img = imgUrl;
-      carta.dataset.index = index;
+            <h2>Telefone</h2>
+            <p> digite seu numero </p>
 
-      const img = document.createElement('img');
-      img.src = imgUrl;
-      carta.appendChild(img);
+            <h2>Perfil redes sociais</h2>
+            <p> digite o seu @ </p>
+            <h5>-------------------------------------------------------------------------------------------------------------------------------</h5>
+            <p>DIGITE SUA FRASE FAVORITA</p>
+        </div>
 
-      carta.addEventListener('click', () => {
-        if (travado || carta.classList.contains('virada') || carta === cartaVirada) return;
+        <!-- Frase de destaque -->
+        <div class="quote">
+            <p>Escola Estadual de Mata Verde</p>
+        </div>
 
-        carta.classList.add('virada');
+        <!-- Botão de seguir -->
+        <button class="follow-button">Seguir</button>
+    </div>
 
-        if (!cartaVirada) {
-          cartaVirada = carta;
-        } else {
-          if (cartaVirada.dataset.img === carta.dataset.img) {
-            cartaVirada = null;
-          } else {
-            travado = true;
-            setTimeout(() => {
-              carta.classList.remove('virada');
-              cartaVirada.classList.remove('virada');
-              cartaVirada = null;
-              travado = false;
-            }, 1000);
-          }
-        }
-      });
-
-      tabuleiro.appendChild(carta);
-    });
-  </script>
 </body>
 </html>
+
 
